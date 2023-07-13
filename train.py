@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer, ViTFeatureExtractor, AutoFeatureExtractor
 # from transformers import Seq2SeqTrainer ,Seq2SeqTrainingArguments
 from transformers import AutoTokenizer ,  GPT2Config , default_data_collator
+from transformers import AdamW
+
 
 import torch
 from torch.utils.data import DataLoader
@@ -108,8 +110,8 @@ if __name__ == '__main__':
 
         cancer_labels.append(cap)
         
-    print(cancer_images[:10])
-    print(cancer_labels[:10])
+    # print(cancer_images[:10])
+    print(cancer_labels[:2])
     
     image_encoder_model = "google/vit-base-patch16-224-in21k"
     text_decode_model = "gpt2"
