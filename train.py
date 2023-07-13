@@ -91,7 +91,7 @@ if __name__ == '__main__':
     path = 'D:/Dropbox/University/2. NTU/Ph.D project/books_set'
     
     # images 
-    total_cancer_images = glob(os.path.join(path, '*/*.png'))
+    cancer_images = glob(os.path.join(path, '*/*.png'))
     
     # json 
     with open(os.path.join(path, 'captions.json'), 'r') as f:
