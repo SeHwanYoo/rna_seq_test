@@ -88,7 +88,7 @@ def train(model, optim, train_dataset):
 
 
 if __name__ == '__main__':
-    path = '/content/drive/MyDrive/Colab_Notebooks/PhD/books_set'
+    path = 'D:/Dropbox/University/2. NTU/Ph.D project/books_set'
     
     # images 
     total_cancer_images = glob(os.path.join(path, '*/*.png'))
