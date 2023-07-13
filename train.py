@@ -113,7 +113,7 @@ if __name__ == '__main__':
     cancer_labels = []
     # max_cap = 0
     for img in cancer_images:
-        uuid = img.split('/')[-1].split('.')[0]
+        uuid = img.split('\\')[-1].split('.')[0]
         cap = find_key(captions, uuid)
 
         # if len(cap) > max_cap:
@@ -121,9 +121,9 @@ if __name__ == '__main__':
 
         cancer_labels.append(cap)
         
-    print(cancer_images[:2])
-    print(cancer_labels[:2])
-    exit() 
+    # print(cancer_images[:2])
+    # print(cancer_labels[:2])
+    # exit() 
     
     image_encoder_model = "google/vit-base-patch16-224-in21k"
     text_decode_model = "gpt2"
