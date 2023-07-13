@@ -15,6 +15,15 @@ import torch
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 import pickle
+from torchvision.transforms import (CenterCrop,
+                                    Compose,
+                                    Normalize,
+                                    RandomHorizontalFlip,
+                                    RandomResizedCrop,
+                                    Resize,
+                                    ToTensor,
+                                    ToPILImage)
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -99,6 +108,8 @@ if __name__ == '__main__':
     with open(os.path.join(path, 'captions.json'), 'r') as f:
         captions = json.load(f)
         
+    print(captions)
+        
     cancer_labels = []
     # max_cap = 0
     for img in cancer_images:
@@ -124,14 +135,12 @@ if __name__ == '__main__':
     image_mean, image_std = feature_extractor.image_mean, feature_extractor.image_std
     size = feature_extractor.size["height"]
 
-    normalize = Normalize(mean=image_mean, std=image_std)
-
     _transforms = Compose(
             [
                 # RandomResizedCrop(size),
                 RandomHorizontalFlip(),
                 ToTensor(),
-                normalize,
+                Normalize(mean=image_mean, std=image_std),
                 # ToPILImage()
             ]
         )
