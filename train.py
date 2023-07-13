@@ -120,6 +120,23 @@ if __name__ == '__main__':
     model.to(device)
 
     feature_extractor = AutoFeatureExtractor.from_pretrained(image_encoder_model)
+    
+    image_mean, image_std = feature_extractor.image_mean, feature_extractor.image_std
+    size = feature_extractor.size["height"]
+
+    normalize = Normalize(mean=image_mean, std=image_std)
+
+    _transforms = Compose(
+            [
+                # RandomResizedCrop(size),
+                RandomHorizontalFlip(),
+                ToTensor(),
+                normalize,
+                # ToPILImage()
+            ]
+        )
+    
+    
     tokenizer = AutoTokenizer.from_pretrained(text_decode_model)
 
     tokenizer.pad_token = tokenizer.eos_token
