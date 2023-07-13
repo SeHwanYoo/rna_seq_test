@@ -98,15 +98,18 @@ if __name__ == '__main__':
         captions = json.load(f)
         
     cancer_labels = []
-    max_cap = 0
+    # max_cap = 0
     for img in cancer_images:
         uuid = img.split('/')[-1].split('.')[0]
         cap = find_key(captions, uuid)
 
-        if len(cap) > max_cap:
-            max_cap = len(cap)
+        # if len(cap) > max_cap:
+        #     max_cap = len(cap)
 
         cancer_labels.append(cap)
+        
+    print(cancer_images[:10])
+    print(cancer_labels[:10])
     
     image_encoder_model = "google/vit-base-patch16-224-in21k"
     text_decode_model = "gpt2"
