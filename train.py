@@ -108,7 +108,7 @@ if __name__ == '__main__':
     with open(os.path.join(path, 'captions.json'), 'r') as f:
         captions = json.load(f)
         
-    print(captions)
+    # print(captions)
         
     cancer_labels = []
     # max_cap = 0
@@ -121,8 +121,9 @@ if __name__ == '__main__':
 
         cancer_labels.append(cap)
         
-    # print(cancer_images[:10])
+    print(cancer_images[:2])
     print(cancer_labels[:2])
+    exit() 
     
     image_encoder_model = "google/vit-base-patch16-224-in21k"
     text_decode_model = "gpt2"
